@@ -16,7 +16,7 @@ export default function UserList() {
     })
  
     return (
-        <List sx={{ width: '100%', maxWidth: 360, flexDirection: 'row'}}>
+        <List sx={{ width: '100%', maxWidth: 360}}>
             {userList}
         </List>
   );
