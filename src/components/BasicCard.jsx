@@ -12,7 +12,7 @@ export default function BasicCard({user}) {
   const [detailsShown, changeDetailsShownStatus] = useIsTrue()
   
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 320 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {user.username}
