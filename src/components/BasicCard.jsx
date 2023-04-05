@@ -1,20 +1,11 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import useIsTrue from '../useIsTrue';
+import useIsTrue from '../customHooks/useIsTrue';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
 export default function BasicCard({user}) {
 
@@ -43,6 +34,9 @@ export default function BasicCard({user}) {
           </Typography>
           <Typography variant="body2">
             {`Phone: ${user.phone}`}
+          </Typography>
+          <Typography variant="body2">
+            {`City: ${user.address.city}`}
           </Typography>
         </>
       }

@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios'
 import './App.css'
 import UserList from './components/UserList'
+import Filter from './components/Filter'
 
 const userList = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com/',
@@ -14,19 +15,25 @@ export const UserContext = React.createContext();
 
 function App() {
   const [users, setUsers] = useState([])
-  
+  const [displayedUsers, setDisplayedUsers] = useState(users)
+  const [filter, setFilter] = useState(null)
 
   useEffect(() => {
     userList.get('users')
             .then(response => setUsers(response.data))
   }, [])
 
-  console.log(users)
+  useEffect(() => {
+    const newDisplayedUsers = filter ? users.filter(user => user.address.city === filter) : users
+    setDisplayedUsers(newDisplayedUsers)
+  }, [filter, users])
+
 
   return (
     <div className="App">
       <h1>Our Teammates</h1>
-      <UserContext.Provider value={users}>
+      <Filter users={users} setFilter={setFilter}/>
+      <UserContext.Provider value={displayedUsers}>
         <UserList />
       </UserContext.Provider>
     </div>
