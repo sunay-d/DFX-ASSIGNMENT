@@ -16,7 +16,7 @@ export const UserContext = React.createContext();
 function App() {
   const [users, setUsers] = useState([])
   const [displayedUsers, setDisplayedUsers] = useState(users)
-  const [filter, setFilter] = useState(null)
+  const [filter, setFilter] = useState('')
 
   useEffect(() => {
     userList.get('users')
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <h1>Our Teammates</h1>
-      <Filter users={users} setFilter={setFilter}/>
+      <Filter users={users} filter={filter} setFilter={setFilter}/>
       <UserContext.Provider value={displayedUsers}>
         <UserList />
       </UserContext.Provider>
